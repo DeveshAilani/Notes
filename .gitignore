@@ -14,3 +14,7 @@
 .cxx
 .idea/render.experimental.xml
 .idea/vcs.xml
+.idea/codeStyles/codeStyleConfig.xml
+.idea/jarRepositories.xml
+.idea/runConfigurations.xml
+*.xml
