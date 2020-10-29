@@ -85,5 +85,5 @@ open class BaseFragment : Fragment() {
         val actionBar = activity!!.actionBar
         actionBar?.title = title
         actionBar?.setDisplayHomeAsUpEnabled(isBack)
-    }
+    } 
 }
