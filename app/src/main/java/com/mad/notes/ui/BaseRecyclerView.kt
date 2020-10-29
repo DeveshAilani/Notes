@@ -6,17 +6,18 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 //androidx exactly?
-open class BaseRecyclerView : RecyclerView {
+open class BaseRecyclerView(context: Context) : RecyclerView(context) {
 
     private var mEmptyView: View? = null
 
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-    constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(
-        context,
-        attrs,
-        defStyle
-    )
+    //todo: testing RV with one constructor impl
+//    constructor(context: Context) : super(context)
+//    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+//    constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(
+//        context,
+//        attrs,
+//        defStyle
+//    )
 
     fun setEmptyView(emptyView: View?) {
         mEmptyView = emptyView
@@ -39,7 +40,7 @@ open class BaseRecyclerView : RecyclerView {
         }
 
         //ask
-        requestLayout()
+       // requestLayout()
 
     }
 
@@ -47,6 +48,12 @@ open class BaseRecyclerView : RecyclerView {
         //note:- written above super
         adapter?.unregisterAdapterDataObserver(mDataObserver)
         super.setAdapter(adapter)
+        adapter?.registerAdapterDataObserver(mDataObserver)
+        adapter?.itemCount?.let {
+            if (it > 0) {
+                updateRecyclerviewStatus()
+            }
+        }
     }
 
     private val mDataObserver: AdapterDataObserver = object : AdapterDataObserver() {
