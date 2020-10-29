@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Notes</string>
+    // Common Strings
+    <string name="error_no_internet_message">No internet connection!</string>
 </resources>
